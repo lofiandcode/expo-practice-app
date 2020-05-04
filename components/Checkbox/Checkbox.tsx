@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableWithoutFeedback, View } from 'react-native';
+import { TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
 import { CheckBox } from 'react-native-elements';
 
 interface CheckboxProps {
@@ -15,27 +15,13 @@ export default function Checkbox({
     size = 18,
     disabled = false,
 }:CheckboxProps) {
-    const isDisabled = () => {  
-        if (disabled) {
-          return (
-            <CheckBox 
-              Component={TouchableWithoutFeedback}
-              size={size}
-            />
-          )
-        } 
-        return (
-            <CheckBox 
-                checked={checked}
-                onPress={setCheck}
-                size={size}
-            />
-        )
-    } 
 
     return (
-        <View>
-            {isDisabled()}
-        </View>
+            <CheckBox 
+                Component={disabled ? TouchableWithoutFeedback : TouchableOpacity}
+                checked={checked}
+                onPress={disabled ? () => null : setCheck}
+                size={size}
+            />
     );
 };

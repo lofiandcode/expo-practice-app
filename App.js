@@ -1,12 +1,13 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import Checkbox from './components/Checkbox/Checkbox';
+import CheckboxContainer from './components/CheckboxContainer';
+
 
 export default function App() {
   return (
     <View style={styles.container}>
       <Text style={{fontSize: 24}}>Hello World!</Text>
-      <Checkbox checked={false} size={50} disabled={false} />
+      <CheckboxContainer />
     </View>
   );
 }

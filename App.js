@@ -5,8 +5,8 @@ import Checkbox from './components/Checkbox/Checkbox';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Hello iOS World</Text>
-      <Checkbox />
+      <Text style={{fontSize: 24}}>Hello World!</Text>
+      <Checkbox checked={false} size={50} disabled={false} />
     </View>
   );
 }

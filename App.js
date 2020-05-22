@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
-//import CheckboxContainer from './components/CheckboxContainer';
 import ScrollContainer from './components/ScrollContainer/ScrollContainer'
 
 
@@ -14,14 +13,7 @@ export default class App extends React.Component {
   }
 
   handleScrollEnd = () => {
-    this.checkState();
-    console.log("Entered handleScrollEnd and isButtonDisabled = ", this.state.isButtonDisabled);
-    this.setState({isButtonDisabled: false}, () => this.checkState());
-    console.log('Right after setState ->', () => this.checkState())
-  }
-
-  checkState = () => {
-    console.log("isButtonDisabled = ", this.state.isButtonDisabled)
+    this.setState({isButtonDisabled: false});
   }
 
   render() {
@@ -43,7 +35,7 @@ export default class App extends React.Component {
             </Text>
           </ScrollContainer>
         </View>
-        <Button style={styles.button} title='Accept' onPress={() => {}} disabled={this.state.disabled} />
+        <Button style={styles.button} title='Accept' onPress={() => {}} disabled={this.state.isButtonDisabled} />
       </View>
     );
   }

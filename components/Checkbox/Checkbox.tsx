@@ -7,7 +7,7 @@ interface CheckboxProps {
 	setCheck: Function;
 	size?: number; // default = 18
 	disabled?: boolean;  // default = false
-};
+}
 
 export default function Checkbox({ 
     checked,
@@ -20,7 +20,7 @@ export default function Checkbox({
             <CheckBox 
                 Component={disabled ? TouchableWithoutFeedback : TouchableOpacity}
                 checked={checked}
-                onPress={disabled ? () => null : setCheck}
+                onPress={disabled ? () => null : () => setCheck()}
                 size={size}
             />
     );

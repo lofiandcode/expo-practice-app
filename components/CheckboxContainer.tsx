@@ -15,7 +15,7 @@ export default class CheckboxContainer extends Component {
                 checked={this.state.checked} 
                 setCheck={this.handleOnPress}
                 size={50}
-                disabled={true}
+                disabled={false}
             />
         )
     }

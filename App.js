@@ -43,11 +43,12 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    marginTop: 200,
+    flex: 2,
   },
   scrollView: {
     width: '100%',
-    height: '400px',
+    height: 400,
     borderWidth: 3,
     borderColor: '#000000',
     backgroundColor: 'pink',

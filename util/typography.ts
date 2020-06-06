@@ -5,7 +5,7 @@
  */
 
 import { TextStyle } from 'react-native';
-import { NAVY_BLUE, LIGHT_BLUE } from '@util/colors';
+import { NAVY_BLUE, LIGHT_BLUE } from './colors';
 
 const heading: TextStyle = {
 	fontFamily: 'open-sans-bold',

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Checkbox from './Checkbox/Checkbox'
+import Checkbox from './Checkbox'
 
 export default class CheckboxContainer extends Component {
     constructor() {

@@ -8,32 +8,36 @@ export default class App extends React.Component {
   constructor() {
     super();
     this.state = {
+      checked: false,
       isButtonDisabled: true,
+      termsAndConditions: "You hereby agree to the terms and conditions set forth by The Be Good Project Foundation including but not limited to the Food Donation Waiver, Privacy Policy, etc. You hereby agree to the terms and conditions set forth by The Be Good Project Foundation including but not limited to the Food Donation Waiver, Privacy Policy, etc. You hereby agree to the terms and conditions set forth by The Be Good Project Foundation including but not limited to the Food Donation Waiver, Privacy Policy, etc. You hereby agree to the terms and conditions set forth by The Be Good Project Foundation including but not limited to the Food Donation Waiver, Privacy Policy, etc. ",
+      checkboxLabel: "I agree to the Terms and Conditions",
     }
   }
 
   handleScrollEnd = () => {
     this.setState({isButtonDisabled: false});
   }
+  handleOnPress = () => {
+    let toddleChecked = !this.state.checked
+    this.setState({checked: toddleChecked})
+  }
 
   render() {
     return (
       <View>
         <View style={styles.container}>
-          <ScrollContainer 
-              onScrollToEnd={this.handleScrollEnd}
-              style={styles.scrollView}
-          >
-            <Text style={styles.text} >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-              minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-              aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-              pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-              culpa qui officia deserunt mollit anim id est laborum.
-            </Text>
-          </ScrollContainer>
+          <ScrollContainer
+              onScrollToEnd={ this.handleScrollEnd }
+              onPress={ this.handleOnPress }
+              styleContainer={ styles.scrollView }
+              styleDocumentText={ styles.documentText }
+              styleCheckboxLabel={ styles.checkboxLabel }
+              documentText={ this.state.termsAndConditions }
+              checkboxLabel={ this.state.checkboxLabel }
+              displayCheckbox={ true }
+              checked={ this.state.checked }
+          />
         </View>
         <Button style={styles.button} title='Accept' onPress={() => {}} disabled={this.state.isButtonDisabled} />
       </View>
@@ -43,8 +47,7 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 200,
-    flex: 2,
+    flex: 1,
   },
   scrollView: {
     width: '100%',
@@ -53,8 +56,11 @@ const styles = StyleSheet.create({
     borderColor: '#000000',
     backgroundColor: 'pink',
   },
-  text: {
+  documentText: {
     fontSize: 42,
+  },
+  checkboxLabel: {
+    fontSize: 14,
   },
   button: {
     flex: 1,

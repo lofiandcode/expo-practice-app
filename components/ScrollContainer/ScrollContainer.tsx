@@ -1,35 +1,47 @@
 import React from 'react';
-import { ScrollView } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
+import { CheckBox } from 'react-native-elements';
+import EndOfScrollWrapper from './EndOfScrollWrapper';
+import styles from './ScrollContainer.styles';
 
 interface ScrollContainerProps {
-  onScrollToEnd: Function;
-  style: Object;
-  children: Object;
+	onScrollToEnd?: Function;
+  onPress?: Function;
+  setChecked?: Function;
+  documentText: string;
+  checked: boolean;
+  checkboxSize?: number;
+  displayCheckbox?: boolean;
+  checkboxLabel?: string;
+  styleContainer?: any;
+	styleDocumentText?: any;
+  styleCheckboxLabel?: any;
 }
 
 export default function ScrollContainer({
-  onScrollToEnd,
-  style,
-  children,
+	onScrollToEnd = () => {},
+  onPress = () => {},
+  setChecked = () => {},
+  checkboxSize,
+  documentText,
+  displayCheckbox = true,
+  checked,
+  checkboxLabel,
+	styleContainer,
+	styleDocumentText,
+  styleCheckboxLabel,
 }: ScrollContainerProps) {
-  
-  const isCloseToBottom = ({layoutMeasurement, contentOffset, contentSize}) => {
-    const paddingToBottom = 20;
-    return layoutMeasurement.height + contentOffset.y >=
-      contentSize.height - paddingToBottom;
-  };
-
-  return (
-    <ScrollView
-      onScroll={({nativeEvent}) => {
-        if (isCloseToBottom(nativeEvent)) {
-          onScrollToEnd();
+	
+	return (
+    <EndOfScrollWrapper onScrollToEnd={onScrollToEnd} style={styleContainer}>
+        <Text style={styleDocumentText}>{documentText}</Text>
+        { displayCheckbox &&
+          <>
+            <CheckBox checked={checked} onPress={onPress}/>
+            <Text style={styleCheckboxLabel}>{checkboxLabel}</Text>
+          </>
         }
-      }}
-      style={style}
-      scrollEventThrottle={400}
-    >
-      {children}
-    </ScrollView>
-  );
+    </EndOfScrollWrapper>
+	);
 }
+
